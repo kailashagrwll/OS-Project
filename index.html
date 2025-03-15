@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CPU Scheduler Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>CPU Scheduler Simulator</h1>
+    <div class="container">
+        <div class="panel">
+            <h2>Process Management</h2>
+            <div class="input-group">
+                <input type="text" id="pid" placeholder="Process ID (e.g., P1)">
+                <input type="number" id="arrival" placeholder="Arrival Time" min="0">
+                <input type="number" id="burst" placeholder="Burst Time" min="1">
+                <input type="number" id="priority" placeholder="Priority" min="0">
+                <button onclick="addProcess()">Add Process</button>
+                <button onclick="generateRandom()">Generate Random</button>
+            </div>   
+            <div id="processTable"></div>
+        </div>
+</body>
+</html>
