@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+    color: #1a73e8;
+    margin-bottom: 20px;
+}
+
+button {
+    background: #1a73e8;
+    color: white;
+    border: none;
+}
+
+.input-group {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+input, select {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
