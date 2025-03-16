@@ -16,8 +16,58 @@
                 <input type="number" id="priority" placeholder="Priority" min="0">
                 <button onclick="addProcess()">Add Process</button>
                 <button onclick="generateRandom()">Generate Random</button>
-            </div>   
+            </div>
+            
             <div id="processTable"></div>
         </div>
+
+        <div class="panel">
+            <h2>Simulation</h2>
+            <div>
+                <select id="algorithm" onchange="algorithmChanged()">
+                    <option value="fcfs">First Come First Serve (FCFS)</option>
+                    <option value="sjf">Shortest Job First (SJF)</option>
+                    <option value="sjf_preemptive">Shortest Job First (Preemptive)</option>
+                    <option value="priority_preemptive">Priority (Preemptive)</option>
+                    <option value="rr">Round Robin</option>
+                    <option value="auto">AI Optimized</option>
+                </select>
+                
+                <div id="timeQuantumDiv" style="display: none;">
+                    <input type="number" id="quantum" value="2" min="1" placeholder="Time Quantum">
+                </div>
+
+                <div id="selectedAlgorithm"></div>
+                
+                <button onclick="runSimulation()">Run Simulation</button>
+            </div>
+
+            <div class="gantt-container">
+                <div class="gantt-title">Gantt Chart</div>
+                <div id="ganttChart"></div>
+            </div>
+
+            <div class="metrics">
+                <div class="metric">
+                    <span>Average Waiting Time:</span>
+                    <span id="avgWaitingTime">-</span>
+                </div>
+                <div class="metric">
+                    <span>Average Turnaround Time:</span>
+                    <span id="avgTurnaroundTime">-</span>
+                </div>
+                <div class="metric">
+                    <span>Average Response Time:</span>
+                    <span id="avgResponseTime">-</span>
+                </div>
+                <div class="metric">
+                    <span>CPU Utilization:</span>
+                    <span id="cpuUtilization">-</span>
+                </div>
+            </div>
+
+            <div id="resultsTable"></div>
+        </div>
+    </div>
 </body>
 </html>
