@@ -15,9 +15,14 @@
                 <input type="number" id="burst" placeholder="Burst Time" min="1">
                 <input type="number" id="priority" placeholder="Priority" min="0">
                 <button onclick="addProcess()">Add Process</button>
-                <button onclick="generateRandom()">Generate Random</button>
+                
             </div>
-            
+            <div>
+                <label>
+                    <input type="checkbox" id="priorityToggle" checked> Include Priority
+                </label>
+                <button onclick="generateFromUI()">Generate Random</button>
+            </div>
             <div id="processTable"></div>
         </div>
 
@@ -32,7 +37,7 @@
                     <option value="rr">Round Robin</option>
                     <option value="auto">AI Optimized</option>
                 </select>
-                
+
                 <div id="timeQuantumDiv" style="display: none;">
                     <input type="number" id="quantum" value="2" min="1" placeholder="Time Quantum">
                 </div>
@@ -69,5 +74,7 @@
             <div id="resultsTable"></div>
         </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
