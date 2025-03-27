@@ -336,7 +336,15 @@ function updateGanttChart() {
     if (!timeline.length) return (chart.innerHTML = `<svg width="100%" height="${height}" viewBox="0 0 ${width} ${height}"></svg>`);
     const endTime = Math.max(...timeline.map(t => t.end));
     const colors = { P1: '#4CAF50', P2: '#2196F3', P3: '#FFC107', P4: '#9C27B0', P5: '#F44336' };
-    let svg = `<svg width="100%" height="${height}" viewBox="0 0 ${width} ${height}">`;
+
+    let svg = `<svg width="100%" height="${height}" viewBox="0 0 ${width} ${height}">
+        <defs>
+            <linearGradient id="barGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgba(255,255,255,0.3)" />
+                <stop offset="100%" style="stop-color:rgba(0,0,0,0.2)" />
+            </linearGradient>
+        </defs>`;
+
     svg += `<line x1="0" y1="100" x2="${width}" y2="100" stroke="#666" stroke-width="2"/>`;
     for (let t = 0; t <= endTime; t++) {
         const x = (t / endTime) * width;
@@ -346,15 +354,43 @@ function updateGanttChart() {
             <text x="${x}" y="125" text-anchor="middle" fill="#666" font-size="12" font-weight="bold">${t}</text>
         `;
     }
+
     timeline.forEach(({ start, end, pid }) => {
-        const x = (start / endTime) * width, w = ((end - start) / endTime) * width, color = colors[pid] || '#1f77b4';
+        const x = (start / endTime) * width;
+        const w = ((end - start) / endTime) * width;
+        const color = colors[pid] || '#1f77b4';
+
         svg += `
-            <g>
-                <rect x="${x}" y="20" width="${w}" height="80" fill="${color}" stroke="white" rx="4"/>
-                <text x="${x + w / 2}" y="65" text-anchor="middle" fill="white" font-weight="bold">${pid}</text>
+            <g class="process-group">
+                <!-- Base shadow -->
+                <rect x="${x}" y="22" width="0" height="76" 
+                      fill="rgba(0,0,0,0.2)" rx="4">
+                    <animate attributeName="width" from="0" to="${w}" 
+                            dur="0.3s" fill="freeze"/>
+                </rect>
+                <!-- Main bar -->
+                <rect x="${x}" y="20" width="0" height="80" 
+                      fill="${color}" rx="4">
+                    <animate attributeName="width" from="0" to="${w}" 
+                            dur="0.3s" fill="freeze"/>
+                </rect>
+                <!-- 3D effect overlay -->
+                <rect x="${x}" y="20" width="0" height="80" 
+                      fill="url(#barGradient)" rx="4" 
+                      style="pointer-events: none">
+                    <animate attributeName="width" from="0" to="${w}" 
+                            dur="0.3s" fill="freeze"/>
+                </rect>
+                <text x="${x + w/2}" y="65" text-anchor="middle" 
+                      fill="white" font-weight="bold" opacity="0">
+                    ${pid}
+                    <animate attributeName="opacity" from="0" to="1" 
+                            dur="0.3s" fill="freeze"/>
+                </text>
             </g>
         `;
     });
+
     chart.innerHTML = svg + '</svg>';
 }
 function calculateMetrics() {
