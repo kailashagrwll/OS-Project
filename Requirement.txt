@@ -1,0 +1,13 @@
+# Frontend Dependencies  
+HTML5  # Used for structuring the web interface  
+CSS3  # Used for styling and layout  
+JavaScript # Core scripting language for functionality  
+
+# Libraries and Frameworks 
+Chart.js  # For Gantt chart visualization
+
+# Development Tools  
+VS Code # Recommended code editors  
+GitHub  # Version control and collaboration  
+Live Server Extension  # For local testing and debugging  
+ 
