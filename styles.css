@@ -4,13 +4,11 @@ body {
     padding: 20px;
     background: #f0f2f5;
 }
-
 h1 {
     text-align: center;
     color: #1a73e8;
     margin-bottom: 20px;
 }
-
 button {
     background: #1a73e8;
     color: white;
@@ -20,36 +18,30 @@ button {
     cursor: pointer;
     margin: 4px 0;
 }
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
 }
-
 .input-group {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
     flex-wrap: wrap;
 }
-
 input, select {
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
     flex: 1;
 }
-
 button:hover { 
     background: #0056b3; 
 }
-
-
-
 .gantt-container {
     margin: 20px 0;
     width: 100%;
     border: 1px solid #dddddd;
+    overflow: hidden; 
 }
 .gantt-title {
     text-align: center;
@@ -59,29 +51,25 @@ button:hover {
     padding: 10px;
     background: #f8f9fa;
 }
-
 #ganttChart {
     width: 100%;
     height: 150px;
     background: white;
     padding: 15px;
-
+    box-sizing: border-box; 
+    overflow-x: auto; 
 }
-
 #ganttChart svg {
     width: 100%;
     height: 100%;
+    display: block; 
 }
-
-
-
 .metrics {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     margin-top: 20px;
 }
-
 .metric {
     background: white;
     padding: 15px;
@@ -89,7 +77,6 @@ button:hover {
     text-align: center;
     border: 1px solid #ddd;
 }
-
 .results-table {
     width: 100%;
     margin-top: 20px;
@@ -97,15 +84,44 @@ button:hover {
     background: white;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
-
 .results-table th, .results-table td {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: center;
 }
-
 .results-table th {
     background-color: #f8f9fa;
     font-weight: bold;
     color: #333;
+}
+.algorithm-comparison {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.comparison-table th,
+.comparison-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+.comparison-table th {
+    background-color: #f1f3f5;
+    font-weight: 600;
+    color: #495057;
+}
+.recommendation-details {
+    color: #666;
+    font-size: 0.9em;
+    margin: 5px 0 15px 0;
+    font-style: italic;
 }
